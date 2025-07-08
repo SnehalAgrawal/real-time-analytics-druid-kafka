@@ -1,0 +1,14 @@
+{
+  "name": "clickstream-analytics",
+  "version": "1.0.0",
+  "description": "Real-time clickstream analytics with Node.js, Kafka, and Apache Druid",
+  "main": "server.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "kafkajs": "^2.2.4",
+    "axios": "^0.27.2"
+  }
+}

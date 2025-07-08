@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clickstream Stats</title>
+  </head>
+  <body>
+    <h1>Top Pages</h1>
+    <button id="sendClickBtn">Send Dummy Click</button>
+    <ul id="stats"></ul>
+    <script>
+      const pages = ["/home", "/about", "/products", "/contact", "/pricing"];
+      const sendClickBtn = document.getElementById("sendClickBtn");
+
+      async function sendDummyClick() {
+        const userId = `user-${Math.floor(Math.random() * 1000)}`;
+        const page = pages[Math.floor(Math.random() * pages.length)];
+        
+        await fetch("/click", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId, page }),
+        });
+      }
+
+      async function updateStats() {
+        const res = await fetch("/stats");
+        const data = await res.json();
+        
+        const ul = document.getElementById("stats");
+        ul.innerHTML = ""; // Clear existing stats
+        
+        if (Array.isArray(data)) {
+          data.forEach((row) => {
+            const li = document.createElement("li");
+            li.textContent = `${row.page}: ${row.views} views`;
+            ul.appendChild(li);
+          });
+        }
+      }
+
+      sendClickBtn.addEventListener("click", sendDummyClick);
+
+      // Initial load
+      updateStats();
+
+      // Auto-refresh every 2 seconds
+      setInterval(updateStats, 2000);
+    </script>
+  </body>
+</html>

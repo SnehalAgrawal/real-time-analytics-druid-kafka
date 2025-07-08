@@ -1,0 +1,28 @@
+{
+  "type": "kafka",
+  "dataSchema": {
+    "dataSource": "clickstream",
+    "timestampSpec": { "column": "timestamp", "format": "iso" },
+    "dimensionsSpec": {
+      "dimensions": ["userId", "page"]
+    },
+    "granularitySpec": {
+      "type": "uniform",
+      "segmentGranularity": "minute",
+      "queryGranularity": "minute",
+      "rollup": false
+    }
+  },
+  "tuningConfig": {
+    "type": "kafka"
+  },
+  "ioConfig": {
+    "topic": "clicks",
+    "inputFormat": { "type": "json" },
+    "consumerProperties": {
+      "bootstrap.servers": "kafka:29092"
+    },
+    "type": "kafka",
+    "useEarliestOffset": true
+  }
+}
