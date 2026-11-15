@@ -1,3 +1,7 @@
+> **This project has moved.** It was rebuilt with current versions (Druid 38, Kafka 4 in KRaft mode), automated setup, and measured latency in
+> [data-engineering-patterns/kafka-druid-streaming](https://github.com/SnehalAgrawal/data-engineering-patterns/tree/main/kafka-druid-streaming).
+> This repository is archived and kept as it was in 2025, for reference.
+
 # Clickstream Analytics Example
 
 This project demonstrates a real-time clickstream analytics system using:
